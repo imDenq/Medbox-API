@@ -1,0 +1,304 @@
+# MEDBOX Backend - .gitignore
+# ===============================
+
+# ===== ENVIRONNEMENT & CONFIGURATION =====
+# Variables d'environnement sensibles
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# Configuration locale
+config/local.js
+config/production.js
+config/secrets.js
+
+# ===== NODE.JS & NPM =====
+# Logs npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Package lock files (choisir un seul gestionnaire)
+# package-lock.json  # Décommenter si vous utilisez yarn
+# yarn.lock          # Décommenter si vous utilisez npm
+
+# Cache npm/yarn
+.npm
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Output directories
+lib/
+dist/
+build/
+
+# ===== LOGS MEDBOX =====
+# Répertoire des logs du système MEDBOX
+logs/
+*.log
+/var/rosin/backend/logs/
+log-*.log
+logs-*.log
+
+# Logs de debug spécifiques
+debug.log
+error.log
+access.log
+medbox-*.log
+
+# ===== FICHIERS TEMPORAIRES =====
+# Fichiers temporaires du système
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Fichiers de cache
+.cache/
+.eslintcache
+.stylelintcache
+
+# ===== BASE DE DONNÉES =====
+# Dumps de base de données
+*.sql
+*.dump
+*.backup
+database_backup_*
+db_dump_*
+
+# Fichiers de migration temporaires
+migrations/temp/
+
+# ===== SÉCURITÉ & AUTHENTIFICATION =====
+# Clés privées et certificats
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# Secrets et tokens
+secrets/
+tokens/
+keys/
+.secrets/
+
+# Fichiers de configuration 2FA
+qr_codes/
+*.qr
+
+# ===== UPLOADS & FICHIERS UTILISATEUR =====
+# Répertoire des uploads
+uploads/
+files/
+attachments/
+user_files/
+
+# Fichiers de données utilisateur
+folders/
+public/uploads/
+
+# ===== DEVELOPMENT & DEBUG =====
+# Debugger
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Coverage reports
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+
+# ===== SYSTÈME D'EXPLOITATION =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ===== DOCKER & CONTAINERS =====
+# Docker
+.dockerignore
+Dockerfile.dev
+docker-compose.override.yml
+.docker/
+
+# Volumes Docker
+docker_volumes/
+
+# ===== CLOUD & DÉPLOIEMENT =====
+# AWS
+.aws/
+
+# Heroku
+.heroku/
+
+# Kubernetes
+*.kubeconfig
+
+# ===== TESTS =====
+# Test coverage
+coverage/
+.nyc_output/
+junit.xml
+test-results/
+
+# Test databases
+test.db
+test.sqlite
+
+# ===== MONITORING & ANALYTICS =====
+# Monitoring files
+monitoring/
+metrics/
+analytics/
+
+# Performance logs
+performance/
+benchmarks/
+
+# ===== BACKUP & ARCHIVES =====
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.old
+backup_*
+archives/
+
+# Fichiers compressés temporaires
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ===== SSL/TLS =====
+# Certificats SSL
+ssl/
+certs/
+*.pem
+*.crt
+*.key
+
+# ===== PROCESS & PID =====
+# Process IDs
+*.pid
+*.seed
+*.pid.lock
+
+# ===== EDITOR & IDE =====
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===== SPÉCIFIQUE MEDBOX =====
+# Configuration appareils MEDBOX
+device_configs/
+medbox_registrations/
+
+# Données de test
+test_data/
+sample_data/
+mock_devices/
+
+# Scripts de développement
+scripts/dev/
+tools/dev/
+
+# Documentation générée
+docs/generated/
+api_docs/
+
+# ===== RUNTIME & PROCESS =====
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Grunt intermediate storage
+.grunt/
+
+# Bower dependency directory
+bower_components/
+
+# JSPM packages
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional REPL history
+.node_repl_history
+
+# ===== SÉCURITÉ MÉDICALE =====
+# Données patient (RGPD/HIPAA)
+patient_data/
+medical_records/
+phi/  # Protected Health Information
+
+# Données de test médicales
+medical_test_data/
+synthetic_patients/
+
+# ===== FIN DU .gitignore MEDBOX =====
