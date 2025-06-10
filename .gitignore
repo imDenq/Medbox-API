@@ -47,7 +47,7 @@ build/
 # Répertoire des logs du système MEDBOX
 logs/
 *.log
-/var/rosin/backend/logs/
+/log/medbox/backend/logs/
 log-*.log
 logs-*.log
 

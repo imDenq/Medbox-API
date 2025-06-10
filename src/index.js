@@ -35,7 +35,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configuration logs (identique)
-const logDir = "/var/rosin/backend/logs";
+const logDir = "/log/medbox/backend/logs";
 const logFileName = `logs-${new Date()
   .toISOString()
   .replace(/T/, "-")
