@@ -1,4 +1,4 @@
-// index.js - Version mise à jour avec support MEDBOX, monitoring ET médicaments
+// index.js - Version mise à jour avec support des tests de diagnostic
 
 const fs = require("fs");
 const path = require("path");
@@ -21,9 +21,11 @@ const criticalFiles = [
   path.join(__dirname, "middlewares", "authMiddleware.js"),
   path.join(__dirname, "routes", "medboxRoutes.js"),
   path.join(__dirname, "controllers", "medboxController.js"),
-  // NOUVEAUX FICHIERS: Routes et contrôleur pour les médicaments
   path.join(__dirname, "routes", "medicineRoutes.js"),
   path.join(__dirname, "controllers", "medicineController.js"),
+  // NOUVEAUX: Routes et contrôleur pour les tests de diagnostic
+  path.join(__dirname, "routes", "diagnosticRoutes.js"),
+  path.join(__dirname, "controllers", "diagnosticController.js"),
 ];
 
 // Vérification de la présence des fichiers
@@ -89,12 +91,14 @@ app.use(express.static(path.join(__dirname, "public")));
 // Import routes
 const authRoutes = require("./routes/authRoutes");
 const medboxRoutes = require("./routes/medboxRoutes");
-const medicineRoutes = require("./routes/medicineRoutes"); // NOUVEAU
+const medicineRoutes = require("./routes/medicineRoutes");
+const diagnosticRoutes = require("./routes/diagnosticRoutes"); // NOUVEAU
 
 // Use routes
 app.use("/api/auth", authRoutes);
 app.use("/api/medbox", medboxRoutes);
-app.use("/api/medicines", medicineRoutes); // NOUVEAU: Routes pour la gestion des médicaments
+app.use("/api/medicines", medicineRoutes);
+app.use("/api/diagnostic", diagnosticRoutes); // NOUVEAU: Routes pour les tests de diagnostic
 app.use("/files", express.static(path.join(__dirname, "folders")));
 
 // Route pour servir l'interface MEDBOX
@@ -102,9 +106,14 @@ app.get("/medbox", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "medbox.html"));
 });
 
-// NOUVEAU: Route pour servir l'interface de gestion des médicaments
+// Route pour servir l'interface de gestion des médicaments
 app.get("/medicines", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "medicines.html"));
+});
+
+// NOUVEAU: Route pour servir l'interface de diagnostic
+app.get("/diagnostic", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "diagnostic.html"));
 });
 
 // Démarrer le monitoring automatique
@@ -121,8 +130,10 @@ function printStartupMessage() {
   console.log(chalk.greenBright(`Service running on localhost:${PORT}`));
   console.log(chalk.yellowBright("🏥 MEDBOX API disponible sur /api/medbox"));
   console.log(chalk.yellowBright("📱 Interface MEDBOX disponible sur /medbox"));
-  console.log(chalk.yellowBright("💊 API Médicaments disponible sur /api/medicines")); // NOUVEAU
-  console.log(chalk.yellowBright("🔬 Interface Médicaments disponible sur /medicines")); // NOUVEAU
+  console.log(chalk.yellowBright("💊 API Médicaments disponible sur /api/medicines"));
+  console.log(chalk.yellowBright("🔬 Interface Médicaments disponible sur /medicines"));
+  console.log(chalk.cyanBright("🔧 API Diagnostic disponible sur /api/diagnostic")); // NOUVEAU
+  console.log(chalk.cyanBright("⚡ Interface Diagnostic disponible sur /diagnostic")); // NOUVEAU
   console.log(chalk.cyanBright("🔍 Monitoring des appareils MEDBOX activé"));
   console.log(chalk.greenBright("any issue must be reported at admin@medbox.eu"));
   console.log(chalk.gray("====================================="));
